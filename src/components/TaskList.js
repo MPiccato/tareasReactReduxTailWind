@@ -17,21 +17,34 @@ const TaskList = () => {
         <div className='w-4/6'>
             <header className='flex justify-between items-center py-4'>
                 <h2>Tareas totales: {tasks.length} </h2>
-                <Link 
+                <Link
                     to='/add'
                     className='bg-indigo-600 px-2 py-1 rounded-sm text-sm'
                 >
-                        Agregar tarea
+                    Agregar tarea
                 </Link>
             </header>
-            {tasks.map(task => (
-                <div key={task.id}>
-                    <h3>{task.title}</h3>
-                    <h4>{task.description}</h4>
-                    <button onClick={()=>handleDelete(task.id)}>Delete</button>
-                    <Link to={`/edit/${task.id}`}>Editar</Link>
-                </div>
-            ))}
+            <div className='grid grid cols-3 gap-4  '>
+
+                {tasks.map(task => (
+                    <div key={task.id} className='bg-neutral-800 p-4 rounded-md'>
+                        <header className='flex justify-between'>
+                            <h3>{task.title}</h3>
+                            <div className='flex gap-x-2 '>
+                                <button className='bg-red-500 px-2 py-1 text-xs rounded-md self-center 'onClick={() => handleDelete(task.id)}>Delete</button>
+                                <Link 
+                                    className='bg-zinc-600 px-2 py-1 text-xs rounded-md'
+                                    to={`/edit/${task.id}`}>Editar</Link>
+                            </div>
+
+                        </header>
+
+                        <h4>{task.description}</h4>
+
+                    </div>
+                ))}
+            </div>
+
         </div>
     )
 }
