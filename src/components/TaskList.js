@@ -14,10 +14,15 @@ const TaskList = () => {
     }
 
     return (
-        <div>
-            <header>
+        <div className='w-4/6'>
+            <header className='flex justify-between items-center py-4'>
                 <h2>Tareas totales: {tasks.length} </h2>
-                <Link to='/add'>Agregar tarea</Link>
+                <Link 
+                    to='/add'
+                    className='bg-indigo-600 px-2 py-1 rounded-sm text-sm'
+                >
+                        Agregar tarea
+                </Link>
             </header>
             {tasks.map(task => (
                 <div key={task.id}>
